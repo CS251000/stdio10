@@ -1,0 +1,637 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<style>
+  body{
+    background-color: rgb(180, 244, 244);
+  }
+    h1 {
+        padding: 20px;
+    }
+    .file-container {
+        display: flex;
+        align-items: center;
+    }
+    input{
+      background-color: rgb(180, 244, 244);
+    }
+    .formtextinput{
+        color: black;
+        border: none;
+        padding: 1%;
+    }
+    .file-container img {
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 5px;
+        margin-left: 10px;
+        display: none;
+    }
+    .file-container label {
+        cursor: pointer;
+    }
+    input[type="number"] {
+       width: 30%;
+       padding: 5%;
+        font-size: 0.8em;
+       
+         
+       }
+</style>
+
+<div class="container text-center">
+<div class="row mb-4">
+    <div class="col-8 mx-auto border border-dark"><h1>Studio-10</h1></div>
+</div>
+<form action="/add-product" method="post" enctype="multipart/form-data">
+<div class="row">
+    <div class="col-6 text-left btn"><h3><button type="reset" class="btn btn-primary">Cancel</button></h3></div>
+    <div class="col-6 text-right "><h3><button type="submit" class="btn btn-primary">Save</button></h3></div>
+</div>
+<br>
+<br>
+
+    <div class="row border-bottom border-dark">
+        <div class="col-7 text-left file-container">
+            <!-- Use label to trigger file input -->
+            <label for="imageUrl" class="form-label fs-2 fw-bolder" style="cursor: pointer;">Add Image</label>
+            <!-- Hidden file input -->
+            <input type="file" name="itemImage" id="imageUrl" style="display: none;">
+            <!-- Display selected image -->
+            <img id="imagePreview" src="#" alt="Selected Image">
+        </div>
+        
+    </div>
+    <br>
+    <div class="row border-bottom border-dark">
+        <div class="col-6 border-end  border-dark itemname p-2">
+          <label for="itemname">Item Name</label>
+          <input class="formtextinput" type="text" name="itemname" id="itemName" placeholder="enter value">
+        </div>
+        <div class="col-4">
+            <div class="dropdown">
+                <button class="btn btn-light dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="print" value="print" checked>
+                        <label class="form-check-label" for="print">
+                          Print
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="plain" value="plain">
+                        <label class="form-check-label" for="plain">
+                          Plain
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="check" value="check">
+                        <label class="form-check-label" for="check">
+                          Check
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="lycra" value="lycra">
+                        <label class="form-check-label" for="lycra">
+                          Lycra
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="denim" value="denim">
+                        <label class="form-check-label" for="denim">
+                          Denim
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" id="kurta" value="kurta">
+                        <label class="form-check-label" for="kurta">
+                          Kurta
+                        </label>
+                      </div>
+                      
+                  </div>
+            </div>
+        </div>
+        <div class="col-2 categorytext"></div>
+    </div>
+    <div class="row border-bottom border-dark">
+      <div class="col-6 border-end  border-dark p-2">
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sizes
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="s" name="size">
+                  <label class="form-check-label" for="sizes">
+                    S
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="m" name="size">
+                  <label class="form-check-label" for="sizes">
+                    M
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="l" name="size">
+                  <label class="form-check-label" for="sizes">
+                    L
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="xl" name="size">
+                  <label class="form-check-label" for="sizes">
+                    XL
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="xxl" name="size">
+                  <label class="form-check-label" for="sizes">
+                    XXL
+                  </label>
+                </div>
+                  
+                  
+              </div>
+              <div id="selectedSizes"></div>
+
+        </div>
+    </div>
+    <div class="col-6"><input class="formtextinput my-3" type="text" name="fabricator" id="fabricatorname" placeholder="Fabricator Name">
+    </div>
+
+    </div>
+    <div class="row border-bottom border-dark">
+      <div class="col-6 border-end  border-dark p-1">
+        <label for="clothrate">Cloth Rate</label>
+        <input class="formtextinput my-1" type="text" name="clothRate" id="clothrate" placeholder=" enter value">
+    </div>
+    <div class="col-6"><input class="formtextinput my-1" type="text"      name="clothname" id="clothName" placeholder="Cloth Name">
+    </div>
+    <!-- averages -->
+    </div>
+    <div class="row border-bottom border-dark m-1">
+      <div class="col-6 border-end  border-dark p-1">
+        <label for="Averagerate">Average Piece: </label>
+        <input class="formtextinput" type="text" name="averagePiece" id="Averagerate" placeholder="enter value" >
+    </div>
+    <div class="col-6">
+      <label for="Purchasename">Purchase Rate</label>
+      <input class="formtextinput my-1" type="text" name="purchaseRate" id="Purchasename" placeholder="enter value">
+    </div>
+    
+    </div>
+    <!-- quantity-expenses -->
+    <div class="row border-bottom border-dark">
+      <div class="col-6 border-end border-dark p-2">
+        <button class="btn btn-primary dropdown-toggle border-none" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Quantity
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="quantitybysize">
+
+        </div>
+        
+      </div>
+      <div class="col-6 border-end border-dark p-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#expenseModal">
+        Expenses
+        </button>
+        <div id="totalexpenses" name="totalExpense"></div>
+        <div class="modal fade" id="expenseModal" tabindex="-1" role="dialog" aria-labelledby="expenseModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="form">
+            <div class="modal-content">
+              <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Pasting</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePasting" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Kadhai</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseKadhai" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Washing</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseWashing" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Button</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseButton" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Design</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseDesign" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Print</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePrint" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">ID</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseID" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="expenses" class="col-2 col-form-label">Double Pocket</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensedoublePocket" >
+              </div>
+            </div>
+
+
+            <button class="btn btn-light" type="submit" data-dismiss="modal">Submit</button>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- fabrication -->
+    <div class="row border-bottom border-dark">
+      <div class="col-6 border-end  border-dark p-1">
+        <label for="fabrication">Fabrication: </label>
+        <input class="formtextinput" type="text" name="fabrication" id="fabrication" placeholder="enter value">
+    </div>
+    <div class="col-6 border-start border-dark">
+      <input class="formtextinput" type="text" name="rate-costing" id="rate-costing" placeholder="Rate Costing: ">
+  </div>
+  
+    </div>
+
+    <div class="row border-bottom border-dark">
+       <!-- sizewise rate -->
+
+       <div class="col-6 border-end border-dark p-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sizewiseModal">
+        Size wise rate
+        </button>
+        
+        <div class="modal fade" id="sizewiseModal" tabindex="-1" role="dialog" aria-labelledby="saleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="form">
+            <div class="modal-content">
+              <div class="form-group row mx-2">
+              <label for="salerate" class="col-2 col-form-label" id="swrS">S</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="smallsale" name="sizeWiseRateS">
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="salerate" class="col-2 col-form-label" id="swrMLXL">M,L,XL</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="mlxlsale" name="sizeWiseRateMLXL" >
+              </div>
+            </div>
+
+            <div class="form-group row mx-2">
+              <label for="salerate" class="col-2 col-form-label" id="swrXXL">XXL</label>
+              <div class="col-10">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="xxlsale" name="sizeWiseRateXXL" >
+              </div>
+            </div>
+
+            <button class="btn btn-light" type="submit" data-dismiss="modal">Submit</button>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-6 border-end  border-dark py-2">
+        <label for="margin">Margin</label>
+        <input class="formtextinput" type="text" name="margin" id="margin" placeholder="enter value">
+    </div>
+      
+      
+    </div>
+    <!-- discount sale rate -->
+    <div class="row border-bottom border-dark">
+      <div class="col-6 border-end  border-dark py-2">
+        <label for="discount"> Discount: </label>
+        <input class="formtextinput" type="text" name="discount" id="discount" placeholder="enter value">
+    </div>
+    <!-- sale rate -->
+    <div class="col-6 border-end border-dark p-2">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saleModal">
+            Sale Rate
+        </button>
+        
+        <div class="modal fade" id="saleModal" tabindex="-1" role="dialog" aria-labelledby="saleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="form">
+                <div class="modal-content">
+                    <div class="form-group row mx-2">
+                        <label for="salerate" class="col-2 col-form-label">S</label>
+                        <div class="col-10">
+                            <span class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="smallsalerate" name="ssalerate"></span>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row mx-2">
+                        <label for="salerate" class="col-2 col-form-label">M,L,XL</label>
+                        <div class="col-10">
+                            <span class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="mlxlsalerate" name="mlxlsalerate"></span>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row mx-2">
+                        <label for="salerate" class="col-2 col-form-label">XXL</label>
+                        <div class="col-10">
+                            <span class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="xxlsalerate" name="xxlsalerate"></span>
+                        </div>
+                    </div>
+    
+                    <button class="btn btn-light" type="submit" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+  </div>
+  <div class="row border-bottom border-dark">
+    <div class="col-6 border-end  border-dark py-2">
+      <input class="formtextinput" type="text" name="packingCharge" id="pack" placeholder="Packing Charge">
+  </div>
+    
+    <div class="col-6 border-end border-dark py-2" id="NetProfit"></div>
+  </div>
+
+</form>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function updateDisplayedCategory() {
+      var selectedCategory = document.querySelector('input[name="category"]:checked').value;
+      var categoryTextElement = document.querySelector('.categorytext');
+      categoryTextElement.innerHTML = selectedCategory;
+  }
+
+  document.querySelectorAll('input[name="category"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+          updateDisplayedCategory();
+      });
+  });
+
+  updateDisplayedCategory();
+});
+</script>
+<script>
+// Function to update the selected sizes
+function updateSelectedSizes() {
+const selectedSizes = [];
+document.querySelectorAll('input[name="size"]:checked').forEach(function(checkbox) {
+    selectedSizes.push(checkbox.id.toUpperCase());
+});
+document.getElementById('selectedSizes').innerText = selectedSizes.join(", ");
+}
+
+// Add event listeners to each checkbox input
+document.querySelectorAll('input[name="size"]').forEach(function(checkbox) {
+checkbox.addEventListener('change', function() {
+    updateSelectedSizes();
+});
+});
+
+// Call the function to initially update the selected sizes
+updateSelectedSizes();
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to update the displayed category
+  function updateDisplayedCategory() {
+      var selectedCategory = document.querySelector('input[name="category"]:checked').value;
+      var categoryTextElement = document.querySelector('.categorytext');
+      categoryTextElement.innerHTML = selectedCategory;
+  }
+
+  // Function to display the selected image
+  function displaySelectedImage(input) {
+      var file = input.files[0];
+      var reader = new FileReader();
+      var imagePreview = document.getElementById('imagePreview');
+
+      reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+      };
+
+      reader.readAsDataURL(file);
+  }
+
+  // Add event listener to update displayed category when radio button changes
+  document.querySelectorAll('input[name="category"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+          updateDisplayedCategory();
+      });
+  });
+
+  // Add event listener to trigger display of selected image when file input changes
+  document.getElementById('imageUrl').addEventListener('change', function() {
+      displaySelectedImage(this);
+  });
+
+  // Call the function to initially set the displayed category
+  updateDisplayedCategory();
+});
+</script>
+<script>
+let selectedSizes = [];
+document.querySelectorAll('input[name="size"]').forEach(function(checkbox) {
+checkbox.addEventListener('change', function() {
+if (checkbox.checked) {
+  selectedSizes.push(checkbox.id);
+} else {
+  const index = selectedSizes.indexOf(checkbox.id);
+  if (index > -1) {
+    selectedSizes.splice(index, 1);
+  }
+}
+updateQuantityDropdown();
+});
+});
+function updateQuantityDropdown() {
+const quantityDropdown = document.getElementById('quantitybysize');
+quantityDropdown.innerHTML = '';
+
+selectedSizes.forEach(function(size) {
+const sizeLabel = document.createElement('label');
+sizeLabel.textContent = size.toUpperCase();
+sizeLabel.className = 'form-check-label';
+
+const sizeInput = document.createElement('input');
+sizeInput.type = 'number';
+sizeInput.className = 'form-check-input w-75';
+sizeInput.name = 'quantity'+sizeLabel.textContent;
+sizeInput.id = size.toLowerCase()+'q';
+
+// sizeInput.value = 0;
+sizeInput.required = true;
+sizeInput.placeholder=sizeLabel.textContent;
+
+const sizeDiv = document.createElement('div');
+sizeDiv.className = 'form-check';
+
+sizeDiv.appendChild(sizeInput);
+sizeDiv.appendChild(sizeLabel);
+quantityDropdown.appendChild(sizeDiv);
+});
+};
+updateQuantityDropdown();
+</script>
+<!-- total expenses -->
+<script>
+
+function calculateTotalExpense() {
+
+var expensePasting = parseFloat(document.getElementById("expensePasting").value) || 0;
+var expenseKadhai = parseFloat(document.getElementById("expenseKadhai").value) || 0;
+var expenseWashing = parseFloat(document.getElementById("expenseWashing").value) || 0;
+var expenseButton = parseFloat(document.getElementById("expenseButton").value) || 0;
+var expenseDesign = parseFloat(document.getElementById("expenseDesign").value) || 0;
+var expensePrint = parseFloat(document.getElementById("expensePrint").value) || 0;
+var expenseID = parseFloat(document.getElementById("expenseID").value) || 0;
+var expensedoublePocket = parseFloat(document.getElementById("expensedoublePocket").value) || 0;
+
+var totalExpense = expensePasting + expenseKadhai + expenseWashing + expenseButton + expenseDesign + expensePrint + expenseID + expensedoublePocket;
+
+var totalExpensesElement = document.getElementById("totalexpenses");
+if (totalExpense > 0) {
+  totalExpensesElement.innerText = totalExpense.toFixed(2);
+  totalExpensesElement.style.display = "inline-block";
+} else {
+  totalExpensesElement.style.display = "none";
+}
+}
+calculateTotalExpense();
+var expenseInputs = document.querySelectorAll(".form-control-plaintext");
+expenseInputs.forEach(function(input) {
+input.addEventListener("input", calculateTotalExpense);
+});
+</script>
+<!-- rate costing -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Function to calculate and update the rate costing placeholder
+function updateRateCostingPlaceholder() {
+var averageRate = parseFloat(document.getElementById("Averagerate").value) || 0;
+var saleClothRate = parseFloat(document.getElementById("clothrate").value) || 0;
+var totalExpenses = parseFloat(document.getElementById("totalexpenses").innerText) || 0;
+var fabricationExpenses = parseFloat(document.getElementById("fabrication").value) || 0;
+
+var rateCosting = averageRate * saleClothRate + totalExpenses + fabricationExpenses;
+
+var rateCostingInput = document.getElementById("rate-costing");
+rateCostingInput.value = "rate costing=" + rateCosting.toFixed(2);
+}
+
+// Call the function initially and whenever any of the input values change
+updateRateCostingPlaceholder();
+var inputFields = document.querySelectorAll("#Averagerate, #clothrate, #totalexpenses, #fabrication");
+inputFields.forEach(function(input) {
+input.addEventListener("input", updateRateCostingPlaceholder);
+});
+});
+</script>
+<!-- sale rates -->
+<script>
+// Update salerate values based on input fields
+function updateSalerates() {
+    var smallsale = parseFloat(document.getElementById("smallsale").value) || 0;
+    var mlxlsale = parseFloat(document.getElementById("mlxlsale").value) || 0;
+    var xxlsale = parseFloat(document.getElementById("xxlsale").value) || 0;
+    var dis = parseFloat(document.getElementById("discount").value) || 0;
+    var mar = parseFloat(document.getElementById("margin").value) || 0;
+    var pack = parseFloat(document.getElementById("pack").value) || 0;
+    var clothrate = parseFloat(document.getElementById("clothrate").value) || 0;
+    var purchaserate = parseFloat(document.getElementById("Purchasename").value) || 0;
+
+    var smallsalerate = ((1 + mar / 100) * smallsale);
+    var mlxlsalerate = ((1 + mar / 100) * mlxlsale);
+    var xxlsalerate = ((1 + mar / 100) * xxlsale);
+
+    if (smallsale == 0) {
+        smallsalerate = 0;
+    }
+    if (mlxlsale == 0) {
+        mlxlsalerate = 0;
+    }
+    if (xxlsale == 0) {
+        xxlsalerate = 0;
+    }
+
+    document.getElementById("smallsalerate").textContent = smallsalerate.toFixed(2);
+    document.getElementById("mlxlsalerate").textContent = mlxlsalerate.toFixed(2);
+    document.getElementById("xxlsalerate").textContent = xxlsalerate.toFixed(2);
+
+    var profit = 0;
+    if (smallsalerate != 0) {
+        profit = (smallsalerate - smallsale) - smallsalerate * dis / 100;
+    }
+    if (mlxlsalerate != 0) {
+        profit = (mlxlsalerate - mlxlsale) - mlxlsalerate * dis / 100;
+    }
+    if (xxlsalerate != 0) {
+        profit = (xxlsalerate - xxlsale) - xxlsalerate * dis / 100;
+    }
+    profit += clothrate - purchaserate - 2;
+    profit -= pack;
+
+    document.getElementById("NetProfit").innerHTML = "NetProfit = " + profit.toFixed(2);
+}
+
+// Call the function initially and whenever any of the input values change
+updateSalerates();
+var inputFields = document.querySelectorAll("#smallsale, #mlxlsale, #xxlsale,#discount,#margin,#pack,#clothrate,#Purchasename");
+inputFields.forEach(function(input) {
+    input.addEventListener("input", updateSalerates);
+});
+
+</script>
+<!-- sizewise rate -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
