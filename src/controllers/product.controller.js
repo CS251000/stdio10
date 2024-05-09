@@ -12,7 +12,7 @@ export default class ProductController{
     async postaddProduct(req,res){
         try{
             console.log(req.body);
-            res.render('index.ejs');
+            res.render('productadded.ejs');
         }catch(err){
             console.log(err);
         }
