@@ -16,22 +16,20 @@ export const productSchema = new mongoose.Schema({
     averagePiece:Number,
     purchaseRate:Number,
     totalExpense:Number,
-    sizeWiseQuantity:{
-        quantityS:Number,
-        quantityM:Number,
-        quantityL:Number,
-        quantityXL:Number,
-        quantityXXL:Number
-    },
+    quantityS:Number,
+    quantityM:Number,
+    quantityL:Number,
+    
+    quantityXL:Number,
+    quantityXXL:Number,
+    
     fabrication:{
         type:Number,
         ref:'Fabricators',
     },
-    sizeWiseRate:{
-        sizeWiseRateS:Number,
-        sizeWiseRateMLXL:Number,
-        sizeWiseRateXXL:Number,
-    },
+    sizeWiseRateS:Number,
+    sizeWiseRateMLXL:Number,
+    sizeWiseRateXXL:Number,
     margin:Number,
     discount:Number,
     packingCharge:Number

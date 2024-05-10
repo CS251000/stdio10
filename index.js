@@ -4,6 +4,7 @@ import ejsLayouts from 'express-ejs-layouts';
 import path from 'path';
 import { connectUsingMongoose } from './src/config/mongoose.js';
 import ProductController from './src/controllers/product.controller.js';
+import { uploadFile } from './src/middlewares/add-image.middleware.js';
 
 
 
@@ -28,7 +29,10 @@ app.get('/',(req,res)=>{
     res.render('index.ejs');
 });
 app.get('/add-product',productController.getAddProduct);
-app.post('/',productController.postaddProduct);
+app.post('/',uploadFile.single('itemImage'),productController.postaddProduct);
+
+
+
 const port = 8000;
 app.listen(port,()=>{
     console.log(`Server listening at http://localhost:${port}`);
