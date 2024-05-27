@@ -3,14 +3,11 @@ import mongoose from "mongoose";
 export const productSchema = new mongoose.Schema({
     itemImage:{
         data:Buffer,
-        type:String
+        contentType:String
     },
     itemName: String,
     category:String,
-    fabricator:{
-        type:String,
-        ref:'Fabricators'
-    },
+    fabricator:String,
     clothRate:Number,
     clothName:String,
     averagePiece:Number,
@@ -23,10 +20,7 @@ export const productSchema = new mongoose.Schema({
     quantityXL:Number,
     quantityXXL:Number,
     
-    fabrication:{
-        type:Number,
-        ref:'Fabricators',
-    },
+    fabrication:Number,
     sizeWiseRateS:Number,
     sizeWiseRateMLXL:Number,
     sizeWiseRateXXL:Number,

@@ -17,6 +17,7 @@ const productController= new ProductController();
 app.use(ejsLayouts);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.set('view engine', 'ejs');
 app.set(
   'views',
@@ -25,11 +26,12 @@ app.set(
 
 
 
-app.get('/',(req,res)=>{
-    res.render('index.ejs');
-});
+app.get('/',productController.getAllProducts);
 app.get('/add-product',productController.getAddProduct);
 app.post('/',uploadFile.single('itemImage'),productController.postaddProduct);
+app.post('/delete-product/:id',productController.deleteProduct);
+app.get('/update-product/:id',uploadFile.single('itemImage'), productController.getUpdateProduct);
+app.post('/update-product/:id',uploadFile.single('itemImage'), productController.postUpdateProduct);
 
 
 

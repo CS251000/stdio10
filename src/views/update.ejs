@@ -44,7 +44,7 @@
       <div class="col-8 mx-auto border border-dark"><h1 class="heading"><a href="/"  style="color: inherit; text-decoration: none;">Studio-10</a></h1></div>
     </div>
 
-<form action="/" method="post" enctype="multipart/form-data">
+<form action="/update-product/<%= item._id%>" method="post" enctype="multipart/form-data">
 <div class="row">
     <div class="col-6 text-left btn"><h3><button type="reset" class="btn btn-primary"><a href="/" style="text-decoration: none; color: rgb(255, 255, 255);">Cancel</a></button></h3></div>
     <div class="col-6 text-right "><h3><button type="submit" class="btn btn-primary">Save</button></h3></div>
@@ -57,7 +57,7 @@
             <!-- Use label to trigger file input -->
             <label for="imageUrl" class="form-label fs-2 fw-bolder" style="cursor: pointer;">Add Image</label>
             <!-- Hidden file input -->
-            <input type="file" name="itemImage" id="imageUrl" style="display: none;" accept="image/*";capture="user">
+            <input type="file" name="itemImage" id="imageUrl" style="display: none;">
             <!-- Display selected image -->
             <img id="imagePreview" src="#" alt="Selected Image">
         </div>
@@ -67,7 +67,7 @@
     <div class="row border-bottom border-dark">
         <div class="col-6 border-end  border-dark itemname p-2">
           <label for="itemName">Item Name</label>
-          <input class="formtextinput" type="text" name="itemName" id="itemName" placeholder="enter value">
+          <input class="formtextinput" type="text" name="itemName" id="itemName" value='<%= item.itemName %>''>
         </div>
         <div class="col-4">
             <div class="dropdown">
@@ -161,7 +161,7 @@
 
         </div>
     </div>
-    <div class="col-6"><input class="formtextinput my-3" type="text" name="fabricator" id="fabricatorname" placeholder="Fabricator Name">
+    <div class="col-6"><input class="formtextinput my-3" type="text" name="fabricator" id="fabricatorname" value="<%= item.fabricator %>">
     </div>
 
     </div>
@@ -169,21 +169,21 @@
 
       <div class="col-6 border-end  border-dark p-1">
         <label for="Purchasename">Cloth Purchase Rate</label>
-        <input class="formtextinput my-1" type="text" name="purchaseRate" id="Purchasename" placeholder="enter value">
+        <input class="formtextinput my-1" type="text" name="purchaseRate" id="Purchasename" value="<%= item.purchaseRate %>">
       </div>
       
-    <div class="col-6"><input class="formtextinput my-1" type="text"      name="clothName" id="clothName" placeholder="Cloth Name">
+    <div class="col-6"><input class="formtextinput my-1" type="text"      name="clothName" id="clothName" value="<%= item.clothName %>">
     </div>
     <!-- averages -->
     </div>
     <div class="row border-bottom border-dark m-1">
       <div class="col-6 border-end  border-dark p-1">
         <label for="Averagerate">Average Piece: </label>
-        <input class="formtextinput" type="text" name="averagePiece" id="Averagerate" placeholder="enter value" >
+        <input class="formtextinput" type="text" name="averagePiece" id="Averagerate" value="<%=item.averagePiece %>" >
     </div>
     <div class="col-6 ">
       <label for="clothrate">Cloth Sale Rate</label>
-      <input class="formtextinput my-1" type="text" name="clothRate" id="clothrate" placeholder=" enter value">
+      <input class="formtextinput my-1" type="text" name="clothRate" id="clothrate" value="<%=item.clothRate %>">
   </div>
   
     
@@ -210,56 +210,56 @@
               <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Pasting</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePasting"  name="expensePasting">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePasting"  name="expensePasting" value="<%=item.expensePasting %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Kadhai</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseKadhai" name="expenseKadhai" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseKadhai" name="expenseKadhai" value="<%= item.expenseKadhai %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Washing</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseWashing" name="expenseWashing" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseWashing" name="expenseWashing" value="<%= item.expenseWashing %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Button</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseButton" name="expenseButton" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseButton" name="expenseButton" value="<%= item.expenseButton %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Design</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseDesign" name="expenseButton" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseDesign" name="expenseButton" value="<%= item.expenseDesign %>" >
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Print</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePrint" name="expensePrint">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensePrint" name="expensePrint" value="<%= item.expensePrint %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">ID</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseID" name="expenseID">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expenseID" name="expenseID" value="<%= item.expenseID %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="expenses" class="col-2 col-form-label">Double Pocket</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensedoublePocket" name="expensedoublePocket" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="expensedoublePocket" name="expensedoublePocket" value="<%= item.expensedoublePocket %>">
               </div>
             </div>
 
@@ -278,7 +278,7 @@
     <div class="row border-bottom border-dark">
       <div class="col-6 border-end  border-dark p-1">
         <label for="fabrication">Fabrication: </label>
-        <input class="formtextinput" type="text" name="fabrication" id="fabrication" placeholder="enter value">
+        <input class="formtextinput" type="text" name="fabrication" id="fabrication" value="<%= item.fabrication %>">
     </div>
     <div class="col-6 border-start border-dark">
       <input class="formtextinput" type="text" name="rate-costing" id="rate-costing" placeholder="Rate Costing: ">
@@ -300,21 +300,21 @@
               <div class="form-group row mx-2">
               <label for="salerate" class="col-2 col-form-label" id="swrS">S</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="smallsale" name="sizeWiseRateS">
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="smallsale" name="sizeWiseRateS" value="<%= item.sizeWiseRateS %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="salerate" class="col-2 col-form-label" id="swrMLXL">M,L,XL</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="mlxlsale" name="sizeWiseRateMLXL" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="mlxlsale" name="sizeWiseRateMLXL" value="<%= item.sizeWiseRateMLXL %>">
               </div>
             </div>
 
             <div class="form-group row mx-2">
               <label for="salerate" class="col-2 col-form-label" id="swrXXL">XXL</label>
               <div class="col-10">
-                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="xxlsale" name="sizeWiseRateXXL" >
+                <input type="number" class="form-control-plaintext border border-dark py-1 my-1 mx-2" id="xxlsale" name="sizeWiseRateXXL" value="<%= item.sizeWiseRateXXL%>">
               </div>
             </div>
 
@@ -330,7 +330,7 @@
 
       <div class="col-6 border-end  border-dark py-2">
         <label for="margin">Margin</label>
-        <input class="formtextinput" type="text" name="margin" id="margin" placeholder="enter value">
+        <input class="formtextinput" type="text" name="margin" id="margin" value="<%= item.margin %>">
     </div>
       
       
@@ -339,7 +339,7 @@
     <div class="row border-bottom border-dark">
       <div class="col-6 border-end  border-dark py-2">
         <label for="discount"> Discount: </label>
-        <input class="formtextinput" type="text" name="discount" id="discount" placeholder="enter value">
+        <input class="formtextinput" type="text" name="discount" id="discount" value="<%= item.discount %>">
     </div>
     <!-- sale rate -->
     <div class="col-6 border-end border-dark p-2">
@@ -375,14 +375,14 @@
                 </div>
             </div>
         </div>
-    </div>
+      </div>
     
 
 
   </div>
   <div class="row border-bottom border-dark">
     <div class="col-6 border-end  border-dark py-2">
-      <input class="formtextinput" type="text" name="packingCharge" id="pack" placeholder="Packing Charge">
+      <input class="formtextinput" type="text" name="packingCharge" id="pack" value="<%= item.packingCharge %>">
   </div>
     
     <div class="col-6 border-end border-dark py-2" id="NetProfit" name="profit"></div>
@@ -570,7 +570,7 @@ rateCostingInput.value = "rate costing=" + rateCosting.toFixed(2);
 
 // Call the function initially and whenever any of the input values change
 updateRateCostingPlaceholder();
-var inputFields = document.querySelectorAll("#Averagerate, #clothrate, #totalexpenses, #fabrication,#expensePasting,#expenseKadhai,#expenseWashing,#expenseButton,#expenseDesign,#expensePrint,#expenseID,#expensedoublePocket");
+var inputFields = document.querySelectorAll("#Averagerate, #clothrate, #totalexpenses, #fabrication,#expensePasting,#expenseKadhai,#expenseWashing,#expenseButton,#expenseDesign,#expensePrint,#expensedoublePocket");
 inputFields.forEach(function(input) {
 input.addEventListener("input", updateRateCostingPlaceholder);
 });
