@@ -146,6 +146,16 @@ export default class ProductController{
             res.status(500).send('Internal Server Error');
         }
     }
+    async getProduct(req,res){
+        try{
+            const productId = req.params.id;
+            const item= await ProductModel.findOne({_id:productId});
+            res.render('info.ejs', { item });
+
+        }catch(err){
+            console.log(err);
+        }
+    }
     
     
 
