@@ -98,10 +98,13 @@ export default class ProductController{
         }
     }
 
-    async  postUpdateProduct(req, res) {
+    async postUpdateProduct(req, res) {
         console.log(req.body);
-        const { itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense, quantityS, quantityM, quantityL, quantityXL, quantityXXL, fabrication, sizeWiseRateS, sizeWiseRateMLXL, sizeWiseRateXXL, margin, discount, packingCharge } = req.body;
-
+        const {
+            itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+            quantityS, quantityM, quantityL, quantityXL, quantityXXL, fabrication, sizeWiseRateS, sizeWiseRateMLXL,
+            sizeWiseRateXXL, margin, discount, packingCharge
+        } = req.body;
     
         let itemImage = null;
     
@@ -121,12 +124,17 @@ export default class ProductController{
             }
     
             const updateData = {
-                itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate,
-                totalExpense, quantityS, quantityM, quantityL, quantityXL, quantityXXL, fabrication, sizeWiseRateS,
-                sizeWiseRateMLXL, sizeWiseRateXXL, margin, discount, packingCharge
+                itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+                fabrication, sizeWiseRateS, sizeWiseRateMLXL, sizeWiseRateXXL, margin, discount, packingCharge
             };
     
-            
+            // Check if any quantity is provided and set the rest to 0 if not provided
+            updateData.quantityS = quantityS !== undefined ? quantityS : 0;
+            updateData.quantityM = quantityM !== undefined ? quantityM : 0;
+            updateData.quantityL = quantityL !== undefined ? quantityL : 0;
+            updateData.quantityXL = quantityXL !== undefined ? quantityXL : 0;
+            updateData.quantityXXL = quantityXXL !== undefined ? quantityXXL : 0;
+    
             if (itemImage) {
                 updateData.itemImage = itemImage;
             } else {
@@ -146,6 +154,7 @@ export default class ProductController{
             res.status(500).send('Internal Server Error');
         }
     }
+    
     async getProduct(req,res){
         try{
             const productId = req.params.id;

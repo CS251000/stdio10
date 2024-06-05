@@ -46,6 +46,7 @@
                             <p class="card-text card-fabricator">Fabricator: <%= item.fabricator %></p>
                             <p class="card-text card-clothName">Cloth Name: <%= item.clothName %></p>
                             <a href="/info-product/<%= item._id %>"  class="btn btn-primary">Info</a>
+                            <a href="/update-product/<%= item._id %>"  class="btn btn-warning">Update</a>
                             <button class="btn btn-danger" onclick="deleteProduct('<%= item._id %>')">Delete</button>
                         </div>
                     </div>

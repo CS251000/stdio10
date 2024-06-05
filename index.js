@@ -31,6 +31,7 @@ app.get('/add-product',productController.getAddProduct);
 app.post('/',uploadFile.single('itemImage'),productController.postaddProduct);
 app.post('/delete-product/:id',productController.deleteProduct);
 app.get('/info-product/:id',uploadFile.single('itemImage'), productController.getProduct);
+app.get('/update-product/:id',uploadFile.single('itemImage'), productController.getUpdateProduct);
 app.post('/update-product/:id',uploadFile.single('itemImage'), productController.postUpdateProduct);
 
 
