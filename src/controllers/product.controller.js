@@ -39,11 +39,12 @@ export default class ProductController{
        var totalExpense = expensePasting + expenseKadhai + expenseWashing + expenseButton + expenseDesign + expensePrint + expenseID + expensedoublePocket;
 
             
-            const {jobSlip,itemName,category,fabricator,clothRate,clothName,averagePiece,clothMeter,clothQuality,purchaseRate,quantityS,quantityM,quantityL,quantityXL,quantityXXL,fabrication,sizeWiseRateS,sizeWiseRateMLXL,sizeWiseRateXXL,margin,discount,packingCharge} = req.body;
+            const {jobSlip,jobslipstatus,itemName,category,fabricator,clothRate,clothName,averagePiece,clothMeter,clothQuality,purchaseRate,quantityS,quantityM,quantityL,quantityXL,quantityXXL,fabrication,sizeWiseRateS,sizeWiseRateMLXL,sizeWiseRateXXL,margin,discount,packingCharge} = req.body;
 
 
             const newProduct = new ProductModel({
                 jobSlip,
+                jobslipstatus,
                 itemImage:{
                     data:req.file.buffer,
                     contentType:req.file.mimetype
@@ -103,8 +104,19 @@ export default class ProductController{
 
     async postUpdateProduct(req, res) {
         console.log(req.body);
+        var expensePasting = parseFloat(req.body.expensePasting) || 0;
+        var expenseKadhai = parseFloat(req.body.expenseKadhai) || 0;
+        var expenseWashing = parseFloat(req.body.expenseWashing) || 0;
+        var expenseButton = parseFloat(req.body.expenseButton) || 0;
+        var expenseDesign = parseFloat(req.body.expenseDesign) || 0;
+        var expensePrint = parseFloat(req.body.expensePrint) || 0;
+        var expenseID = parseFloat(req.body.expenseID) || 0;
+        var expensedoublePocket = parseFloat(req.body.expensedoublePocket) || 0;
+
+       var totalExpense = expensePasting + expenseKadhai + expenseWashing + expenseButton + expenseDesign + expensePrint + expenseID + expensedoublePocket;
+
         const {
-            jobSlip,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+            jobSlip,jobslipstatus,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate,
             quantityS, quantityM, quantityL, quantityXL, quantityXXL, fabrication, sizeWiseRateS, sizeWiseRateMLXL,
             sizeWiseRateXXL, margin, discount, packingCharge
         } = req.body;
@@ -127,7 +139,7 @@ export default class ProductController{
             }
     
             const updateData = {
-                jobSlip,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+                jobSlip,jobslipstatus,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
                 fabrication, sizeWiseRateS, sizeWiseRateMLXL, sizeWiseRateXXL, margin, discount, packingCharge
             };
     

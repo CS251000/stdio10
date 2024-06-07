@@ -5,6 +5,9 @@ export const productSchema = new mongoose.Schema({
         type:String,
         default:""
     },
+    jobslipstatus:{
+        type:String,
+    },
     itemImage: {
         data: Buffer,
         contentType: String
