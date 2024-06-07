@@ -6,7 +6,8 @@ import { connectUsingMongoose } from './src/config/mongoose.js';
 import ProductController from './src/controllers/product.controller.js';
 import { uploadFile } from './src/middlewares/add-image.middleware.js';
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 const app= express();
