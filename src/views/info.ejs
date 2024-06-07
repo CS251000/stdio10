@@ -47,10 +47,13 @@
                 <img src="/path/to/default-image.jpg" class="card-img-top" alt="No image available">
               <% } %>
               <div class="card-body">
+                <h4 class="card-text">Job Slip: <%= item.jobSlip%></h4>
                 <h5 class="card-title"><%= item.itemName %></h5>
                 <p class="card-text card-category">Category: <%= item.category %></p>
                 <p class="card-text card-fabricator">Fabricator: <%= item.fabricator %></p>
                 <p class="card-text card-clothName">Cloth Name: <%= item.clothName %></p>
+                <p class="card-text card-clothQuality">Cloth Quality: <%= item.clothQuality %></p>
+                <p class="card-text card-clothMeter">Cloth Meter: <%= item.clothMeter %></p>
                 <p class="card-text card-clothRate" id="clothrate">Cloth Rate: <%= item.clothRate %></p>
                 <p class="card-text card-averagePiece">Average Piece: <%= item.averagePiece %></p>
                 <p class="card-text card-purchaseRate" id="Purchasename">Purchase Rate: <%= item.purchaseRate %></p>

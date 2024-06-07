@@ -41,10 +41,13 @@
                             <img src="/path/to/default-image.jpg" class="card-img-top" alt="No image available">
                         <% } %>
                         <div class="card-body">
+                            <h4 class="card-text card-jobSlip">Job Slip: <%= item.jobSlip%></h4>
                             <h5 class="card-title"><%= item.itemName %></h5>
                             <p class="card-text card-category">Category: <%= item.category %></p>
                             <p class="card-text card-fabricator">Fabricator: <%= item.fabricator %></p>
                             <p class="card-text card-clothName">Cloth Name: <%= item.clothName %></p>
+                            <p class="card-text card-clothQuality">Cloth Quality: <%= item.clothQuality %></p>
+                            <p class="card-text card-clothMeter">Cloth Meter: <%= item.clothMeter %></p>
                             <a href="/info-product/<%= item._id %>"  class="btn btn-primary">Info</a>
                             <a href="/update-product/<%= item._id %>"  class="btn btn-warning">Update</a>
                             <button class="btn btn-danger" onclick="deleteProduct('<%= item._id %>')">Delete</button>
@@ -75,15 +78,19 @@
         const searchText = document.getElementById('searchInput').value.toLowerCase();
         const items = document.querySelectorAll('.item');
         items.forEach(item => {
+          const jobSlip= item.querySelector('.card-jobSlip').textContent.toLowerCase();
           const itemName = item.querySelector('.card-title').textContent.toLowerCase();
           const category = item.querySelector('.card-category').textContent.toLowerCase();
           const fabricator = item.querySelector('.card-fabricator').textContent.toLowerCase();
           const clothName = item.querySelector('.card-clothName').textContent.toLowerCase();
+          const clothQuality= item.querySelector('.card-clothQuality').textContent.toLowerCase();
           if (
             itemName.includes(searchText) ||
             category.includes(searchText) ||
             fabricator.includes(searchText) ||
-            clothName.includes(searchText)
+            clothName.includes(searchText)||
+            clothQuality.includes(searchText)||
+            jobSlip.includes(searchText)
           ) {
             item.style.display = 'block';
           } else {

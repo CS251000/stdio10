@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 export const productSchema = new mongoose.Schema({
+    jobSlip:{
+        type:String,
+        default:""
+    },
     itemImage: {
         data: Buffer,
         contentType: String
@@ -8,6 +12,16 @@ export const productSchema = new mongoose.Schema({
     itemName: {
         type: String,
         default: ""
+    },
+    clothMeter:{
+        type:Number,
+        default:0
+
+    },
+    clothQuality:{
+        type:String,
+        default:""
+
     },
     category: {
         type: String,

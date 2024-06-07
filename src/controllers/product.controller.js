@@ -39,15 +39,18 @@ export default class ProductController{
        var totalExpense = expensePasting + expenseKadhai + expenseWashing + expenseButton + expenseDesign + expensePrint + expenseID + expensedoublePocket;
 
             
-            const {itemName,category,fabricator,clothRate,clothName,averagePiece,purchaseRate,quantityS,quantityM,quantityL,quantityXL,quantityXXL,fabrication,sizeWiseRateS,sizeWiseRateMLXL,sizeWiseRateXXL,margin,discount,packingCharge} = req.body;
+            const {jobSlip,itemName,category,fabricator,clothRate,clothName,averagePiece,clothMeter,clothQuality,purchaseRate,quantityS,quantityM,quantityL,quantityXL,quantityXXL,fabrication,sizeWiseRateS,sizeWiseRateMLXL,sizeWiseRateXXL,margin,discount,packingCharge} = req.body;
 
 
             const newProduct = new ProductModel({
+                jobSlip,
                 itemImage:{
                     data:req.file.buffer,
                     contentType:req.file.mimetype
                 },
                 itemName,
+                clothMeter,
+                clothQuality,
                 category,
                 fabricator,
                 clothRate,
@@ -101,7 +104,7 @@ export default class ProductController{
     async postUpdateProduct(req, res) {
         console.log(req.body);
         const {
-            itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+            jobSlip,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
             quantityS, quantityM, quantityL, quantityXL, quantityXXL, fabrication, sizeWiseRateS, sizeWiseRateMLXL,
             sizeWiseRateXXL, margin, discount, packingCharge
         } = req.body;
@@ -124,7 +127,7 @@ export default class ProductController{
             }
     
             const updateData = {
-                itemName, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
+                jobSlip,itemName,clothQuality,clothMeter, category, fabricator, clothRate, clothName, averagePiece, purchaseRate, totalExpense,
                 fabrication, sizeWiseRateS, sizeWiseRateMLXL, sizeWiseRateXXL, margin, discount, packingCharge
             };
     

@@ -52,6 +52,25 @@
 <br>
 <br>
 
+<div class="row border border-bottom border-dark"> 
+  <div class="col-6"> <label for="jobSlip">JOB SLIP no.- </label>
+    <input type="text" name="jobSlip" id="job-slip">
+  </div>
+  <div class="col-6"><div class="form-check">
+    <input class="form-check-input" type="radio" name="jobslipstatus"id="pending" value="pending" checked>
+    <label class="form-check-label" for="pending">
+      Pending
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="jobslipstatus" id="complete" value="completed">
+    <label class="form-check-label" for="complete">
+      Complete
+    </label>
+  </div>
+  </div>
+</div>
+
     <div class="row border-bottom border-dark">
         <div class="col-7 text-left file-container">
             <!-- Use label to trigger file input -->
@@ -164,6 +183,17 @@
     <div class="col-6"><input class="formtextinput my-3" type="text" name="fabricator" id="fabricatorname" placeholder="Fabricator Name">
     </div>
 
+    </div>
+    <div class="row border border-bottom border-dark">
+      <div class="col-6 ">
+        <label for="clothMeter">Cloth Meter: </label>
+        <input type="number" name="clothMeter" class="formtextinput" placeholder="Enter cloth meter:">
+      </div>
+      <div class="col-6 ">
+        <label for="clothQuality">Cloth Quality: </label>
+        <input type="text" name="clothQuality" class="formtextinput" placeholder="Enter cloth Quality:">
+      </div>
+      
     </div>
     <div class="row border-bottom border-dark">
 

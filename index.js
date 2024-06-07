@@ -36,7 +36,7 @@ app.post('/update-product/:id',uploadFile.single('itemImage'), productController
 
 
 
-const port = 8000;
+const port = 8800;
 app.listen(port,()=>{
     console.log(`Server listening at http://localhost:${port}`);
     connectUsingMongoose();
