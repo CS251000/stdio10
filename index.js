@@ -2,6 +2,7 @@
 import express from 'express';
 import ejsLayouts from 'express-ejs-layouts';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectUsingMongoose } from './src/config/mongoose.js';
 import ProductController from './src/controllers/product.controller.js';
 import { uploadFile } from './src/middlewares/add-image.middleware.js';
