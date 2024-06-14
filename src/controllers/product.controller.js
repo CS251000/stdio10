@@ -9,7 +9,7 @@ export default class ProductController{
 
     async getAllProducts(req,res,next){
         try{
-        const items= await ProductModel.find().sort({itemName:'asc'});
+        const items= await ProductModel.find();
         res.render('index',{ items });
         }catch(err){
             console.error('Error fetching items:', err);
